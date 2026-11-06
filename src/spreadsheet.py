@@ -2,6 +2,7 @@
 # -*- coding: utf-8 -*-
 from __future__ import print_function
 
+import os
 import requests
 from urllib.parse import urlencode
 from googleapiclient.discovery import build
@@ -17,7 +18,7 @@ class DataSpreadSheets:
     def __init__(self, origin, destination, spreadsheetId):
 
         # API Key and Sheets ID
-        self.api_key = "REMOVED_GOOGLE_MAPS_API_KEY"
+        self.api_key = os.environ["GOOGLE_MAPS_API_KEY"]
         self.spreadsheetId = spreadsheetId
 
         # Params
@@ -119,7 +120,7 @@ class DataSpreadSheets:
 
         SCOPES = ['https://www.googleapis.com/auth/spreadsheets']
 
-        SERVICE_ACCOUNT_FILE = './keys.json'
+        SERVICE_ACCOUNT_FILE = os.environ.get('GOOGLE_APPLICATION_CREDENTIALS', './keys.json')
 
         self.creds = service_account.Credentials.from_service_account_file( SERVICE_ACCOUNT_FILE, scopes=SCOPES )
 

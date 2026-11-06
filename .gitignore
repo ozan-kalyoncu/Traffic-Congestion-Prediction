@@ -1,0 +1,12 @@
+# Credentials: never commit these
+keys.json
+*.pem
+.env
+
+# OS and editor files
+.DS_Store
+~$*
+
+# Python
+__pycache__/
+*.pyc
